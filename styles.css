@@ -478,29 +478,3 @@ body::before {
 @media (max-width: 980px) { .catalog-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px) { .catalog-grid { grid-template-columns: 1fr; } }
 
-/* Cue product gallery */
-.cue-gallery {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 12px;
-  margin-top: 28px;
-}
-.cue-item {
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid rgba(16,16,15,.1);
-  background: #fff;
-  box-shadow: 0 8px 22px rgba(16,16,15,.07);
-  transition: transform .22s ease, box-shadow .22s ease;
-}
-.cue-item:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(16,16,15,.13); }
-.cue-item img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 260 / 340;
-  object-fit: contain;
-  object-position: center;
-  background: #fff;
-}
-@media (max-width: 980px) { .cue-gallery { grid-template-columns: repeat(5, 1fr); } }
-@media (max-width: 640px) { .cue-gallery { grid-template-columns: repeat(3, 1fr); } }
