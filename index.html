@@ -33,10 +33,16 @@
         <a href="#contact" data-i18n="nav.contact">Contact</a>
       </nav>
 
-      <div class="language-switch" aria-label="Language switcher">
-        <button data-lang="id">ID</button>
-        <button data-lang="en" class="active">EN</button>
-        <button data-lang="zh">繁</button>
+      <div class="language-switch language-dropdown" aria-label="Language switcher">
+        <button class="language-current" type="button" aria-haspopup="true" aria-expanded="false">
+          <span class="language-current-label">English</span>
+          <span class="language-chevron">⌄</span>
+        </button>
+        <div class="language-menu" role="menu">
+          <button type="button" data-lang="id" role="menuitem">Bahasa Indonesia</button>
+          <button type="button" data-lang="en" role="menuitem" class="active">English</button>
+          <button type="button" data-lang="zh" role="menuitem">繁體中文</button>
+        </div>
       </div>
     </header>
 

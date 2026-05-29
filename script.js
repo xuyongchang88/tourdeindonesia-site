@@ -59,6 +59,11 @@ navToggle?.addEventListener('click', () => {
   navToggle.setAttribute('aria-expanded', String(open));
 });
 
+const languageNames = { id: 'Bahasa Indonesia', en: 'English', zh: '繁體中文' };
+const languageDropdown = document.querySelector('.language-dropdown');
+const languageCurrent = document.querySelector('.language-current');
+const languageCurrentLabel = document.querySelector('.language-current-label');
+
 function setLanguage(lang) {
   const dict = translations[lang] || translations.en;
   document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : lang;
@@ -67,10 +72,24 @@ function setLanguage(lang) {
     if (dict[key]) el.textContent = dict[key];
   });
   document.querySelectorAll('[data-lang]').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
+  if (languageCurrentLabel) languageCurrentLabel.textContent = languageNames[lang] || 'English';
   localStorage.setItem('tdi-lang', lang);
+  languageDropdown?.classList.remove('open');
+  languageCurrent?.setAttribute('aria-expanded', 'false');
 }
 
+languageCurrent?.addEventListener('click', () => {
+  const open = languageDropdown.classList.toggle('open');
+  languageCurrent.setAttribute('aria-expanded', String(open));
+});
+
 document.querySelectorAll('[data-lang]').forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
+document.addEventListener('click', event => {
+  if (!languageDropdown?.contains(event.target)) {
+    languageDropdown?.classList.remove('open');
+    languageCurrent?.setAttribute('aria-expanded', 'false');
+  }
+});
 setLanguage(localStorage.getItem('tdi-lang') || 'en');
 
 document.getElementById('year').textContent = new Date().getFullYear();
